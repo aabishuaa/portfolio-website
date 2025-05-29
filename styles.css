@@ -1,0 +1,513 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #000000;
+  padding: 15px 30px;
+  border-radius: 50px;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 0;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.navbar ul li a.active,
+.navbar ul li a:hover {
+  background-color: #1e90ff;
+}
+
+.logo-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.hero {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 5.5rem;
+  line-height: 1.2;
+}
+
+.hero .highlight {
+  color: #1e90ff;
+}
+
+.buttons {
+  margin-top: 40px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 20px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.portfolio-btn {
+  background-color: #1e90ff;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.portfolio-btn:hover {
+  background-color: #0f7be5;
+}
+
+.hire-btn {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.hire-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.blob {
+  position: absolute;
+  background-color: #1e90ff;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.blob1 {
+  width: 300px;
+  height: 200px;
+  top: 100px;
+  left: 50px;
+}
+
+.blob2 {
+  width: 300px;
+  height: 300px;
+  bottom: 650px;
+  right: 100px;
+}
+
+.blob3 {
+  width: 100px;
+  height: 150px;
+  top: 150px;
+  right: 80px;
+}
+
+@keyframes carousel {
+  0% {
+    transform: translateX(0px);
+  }
+  25% {
+    transform: translateX(15px) rotate(5deg);
+  }
+  50% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateX(-15px) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Adjust width as needed */
+  overflow: hidden;
+  margin-top: 20px;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 10s linear infinite;
+}
+
+/* Duplicate the carousel content for seamless looping */
+.carousel-track::before,
+.carousel-track::after {
+  content: "";
+  display: flex;
+  width: max-content;
+}
+
+/* Continuous scrolling animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Icon & Image Styling */
+.carousel-track i, .carousel-track img {
+  font-size: 3rem;  /* Adjust size */
+  width: 80px;
+  height: 80px;
+  margin: 0 20px;
+  transition: transform 0.3s ease;
+}
+
+.carousel-track i:hover, .carousel-track img:hover {
+  transform: scale(1.2);
+  color: #1e90ff; /* Change color on hover */
+}
+
+/* Scrollbar for Webkit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  height: 10px; /* Height for horizontal scrollbars */
+}
+
+/* Track (Background) */
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Light gray background */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Hover effect on scrollbar */
+::-webkit-scrollbar-thumb:hover {
+  background: #a0ceff; /* Slightly darker blue on hover */
+}
+
+/* Firefox Custom Scrollbar */
+* {
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: #1e90ff #f0f0f0; /* Handle (blue) and track (light gray) */
+}
+
+/*About Section Styles*/
+/* About Section */
+.about-section {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  color: #333;
+  text-align: left;
+}
+
+/* Wrapper for Content and Image */
+.about-content-wrapper {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  gap: 30px; /* Add space between the image and text */
+}
+
+/* Image Styling */
+.about-image {
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.hummingbird-image {
+  max-width: 200px; /* Adjust the size of the image */
+  height: auto;
+  border-radius: 10px; /* Optional: adds a border radius */
+}
+
+/* Heading Styling */
+.about-heading {
+  font-size: 4rem;
+  color: #1e90ff;
+  text-transform: lowercase;
+  position: relative;
+  opacity: 0;
+  animation: fadeInSlide 1.5s ease-in-out forwards;
+}
+
+/* Fade-In Slide Animation */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Paragraph Styling */
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 2;
+  margin-bottom: 15px;
+}
+
+/* Grid for Desktop View */
+.skills-grid {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+/* Skill Lists */
+.skills-grid ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skills-grid li {
+  font-size: 1.2rem;
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+/* Mobile View: Stack the Skills and Adjust Layout */
+@media (max-width: 600px) {
+  .about-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skills-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .hummingbird-image {
+    max-width: 150px; /* Adjust for mobile view */
+  }
+}
+
+
+/* Portfolio Section */
+.portfolio-section {
+  padding: 50px 0;
+  background-color: transparent; /* Transparent background */
+  text-align: center;
+  position: relative; /* Ensure proper stacking */
+  z-index: 1; /* Adjust if necessary */
+}
+
+.portfolio-heading {
+  font-size: 4rem;
+  color: #1e90ff;
+  margin-bottom: 30px;
+}
+
+
+.portfolio-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 20px;
+  justify-items: center;
+  padding: 0 20px;
+}
+
+.card {
+  background-color: transparent; /* Transparent background */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Optional: Add a subtle border */
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 15px 0;
+  padding: 0 20px;
+}
+
+.card-description {
+  color: #555;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.card { /* Add this to your card's CSS */
+  position: relative; /* Make the card's positioning context relative */
+}
+
+.card-arrow {
+  position: absolute;
+  bottom: 20px; /* Position inside the card */
+  right: 20px; /* Position inside the card */
+  width: 50px;
+  height: 50px;
+  background-color: #1e90ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-arrow:hover {
+  background-color: #0f7be5;
+  transform: scale(1.1);
+}
+
+/* Media Query for Responsive Layout */
+@media (max-width: 768px) {
+  .portfolio-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hidden Contact Section */
+.contact-container {
+  position: fixed;
+  bottom: -100%; /* Initially off-screen */
+  left: 0;
+  width: 100%;
+  background: rgba(30, 30, 30, 0.95); /* Dark semi-transparent background */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  transition: bottom 0.6s ease-in-out;
+}
+
+/* Initially hide contact section */
+#contact-section {
+  position: fixed;
+  bottom: -100%; /* Start hidden */
+  left: 0;
+  width: 100%;
+  background: #222;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  transition: bottom 0.5s ease-in-out;
+  z-index: 1000;
+}
+
+/* Contact cards styling */
+.contact-card {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+/* Show contact section when active */
+#contact-section.active {
+  bottom: 0; /* Slide up into view */
+}
+
+
+/* Contact Cards */
+.contact-card {
+  background: #1e90ff; /* Cool blue */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  min-width: 250px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Links */
+.contact-card a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* Show Contact Section */
+.contact-container.show {
+  bottom: 0; /* Slides up */
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
