@@ -87,6 +87,24 @@ export function initLoadingAnimation() {
 }
 
 /**
+ * Initialize scroll indicator click handler
+ */
+export function initScrollIndicator() {
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  if (!scrollIndicator) return;
+
+  scrollIndicator.addEventListener('click', () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+}
+
+/**
  * Initialize all UI interactions
  */
 export function initUI() {
@@ -94,4 +112,5 @@ export function initUI() {
   initCarousel();
   initThemeToggle();
   initLoadingAnimation();
+  initScrollIndicator();
 }
