@@ -3,94 +3,304 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Abishua - Software Engineer, AI Enthusiast, and Tech Entrepreneur from Jamaica">
+  <title>Abishua | Software Engineer & AI Innovator</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Defer Script -->
   <script src="scripts.js" defer></script>
 </head>
 <body>
-  <nav class="navbar">
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
     <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="/assets/Abishua_Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
       <li class="logo-item">
         <img src="/assets/abishua-logo.png" alt="Abishua Logo" class="logo">
       </li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+      <li><a href="#now" class="nav-link">What I'm Up To</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
   </nav>
-  
 
+  <!-- Hero Section -->
   <section id="home" class="hero">
-    <h1>I'm <span class="highlight">Abishua</span>,</h1>
-    <h1>Software Engineer</h1>
-
-    <div class="carousel">
-      <div class="carousel-track">
-        <i class="fa-brands fa-python"></i>
-        <i class="fa-brands fa-java"></i>
-        <i class="fa-solid fa-code"></i> <!-- Generic coding icon -->
-        <i class="fa-brands fa-js"></i>
-        <i class="fa-brands fa-html5"></i>
-        <i class="fa-brands fa-css3-alt"></i>
-        <i class="fa-solid fa-database"></i> <!-- Database icon -->
-        <i class="fa-brands fa-react"></i>
-        <i class="fa-brands fa-github"></i>
-        <i class="fa-brands fa-php"></i>
-
-        <i class="fa-brands fa-python"></i>
-        <i class="fa-brands fa-java"></i>
-        <i class="fa-solid fa-code"></i> <!-- Generic coding icon -->
-        <i class="fa-brands fa-js"></i>
-        <i class="fa-brands fa-html5"></i>
-        <i class="fa-brands fa-css3-alt"></i>
-        <i class="fa-solid fa-database"></i> <!-- Database icon -->
-        <i class="fa-brands fa-react"></i>
-        <i class="fa-brands fa-github"></i>
-        <i class="fa-brands fa-php"></i>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="about-section">
-    <div class="about-content-wrapper">
-      <div class="about-image">
-      </div>
-      <div class="about-content">
-        <h2 class="about-heading">about abishua</h2>
-        <p>
-          Pursuing a BSc. in Computer Science at the University of the West Indies, Mona in Jamaica. I am a Software Engineer with a broad skill set. My specialties include:
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="greeting">Hey, I'm</span>
+          <span class="name-highlight">Abishua</span>
+        </h1>
+        <h2 class="hero-subtitle">Software Engineer & AI Innovator</h2>
+        <p class="hero-description">
+          Building intelligent solutions that bridge technology and human needs.
+          Based in Jamaica, creating globally.
         </p>
-        <div class="skills-grid">
-          <ul>
-            <li>Full Stack Development</li>
-            <li>UI/UX Design</li>
-            <li>Machine Learning & AI</li>
-          </ul>
-          <ul>
-            <li>Data Science</li>
-            <li>Computer Vision AI</li>
-          </ul>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn btn-primary">
+            <span>View My Work</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span>Let's Connect</span>
+            <i class="fas fa-paper-plane"></i>
+          </a>
+          <a href="/assets/Abishua_Resume.pdf" target="_blank" class="btn btn-outline">
+            <span>Resume</span>
+            <i class="fas fa-download"></i>
+          </a>
         </div>
-        <p>
-          I am an aspiring tech entrepreneur with the dream of ultimately leveraging AI to make my country a better place. I believe tech was made for all, and I am passionate about using my skills to create innovative solutions that improve lives and drive positive change.
-        </p>
+      </div>
+
+      <!-- Tech Stack Carousel -->
+      <div class="tech-carousel-container">
+        <p class="carousel-label">Tech Stack</p>
+        <div class="carousel">
+          <div class="carousel-track">
+            <i class="fab fa-python" title="Python"></i>
+            <i class="fab fa-java" title="Java"></i>
+            <i class="fab fa-js" title="JavaScript"></i>
+            <i class="fab fa-react" title="React"></i>
+            <i class="fab fa-html5" title="HTML5"></i>
+            <i class="fab fa-css3-alt" title="CSS3"></i>
+            <i class="fas fa-database" title="Database"></i>
+            <i class="fab fa-node-js" title="Node.js"></i>
+            <i class="fab fa-git-alt" title="Git"></i>
+            <i class="fab fa-docker" title="Docker"></i>
+            <!-- Duplicate for seamless loop -->
+            <i class="fab fa-python" title="Python"></i>
+            <i class="fab fa-java" title="Java"></i>
+            <i class="fab fa-js" title="JavaScript"></i>
+            <i class="fab fa-react" title="React"></i>
+            <i class="fab fa-html5" title="HTML5"></i>
+            <i class="fab fa-css3-alt" title="CSS3"></i>
+            <i class="fas fa-database" title="Database"></i>
+            <i class="fab fa-node-js" title="Node.js"></i>
+            <i class="fab fa-git-alt" title="Git"></i>
+            <i class="fab fa-docker" title="Docker"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <p>Scroll to explore</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">About Abishua</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="about-content-wrapper">
+        <div class="about-image">
+          <div class="image-frame">
+            <img src="/assets/hummingbird.png" alt="Hummingbird - Symbol of agility and precision" class="hummingbird-image">
+            <div class="image-glow"></div>
+          </div>
+          <p class="image-caption">Like a hummingbird - swift, precise, and always in motion</p>
+        </div>
+
+        <div class="about-content">
+          <p class="about-intro">
+            I'm currently pursuing a <strong>BSc. in Computer Science</strong> at the
+            <strong>University of the West Indies, Mona</strong> in Jamaica. As a passionate
+            Software Engineer, I believe in creating technology that makes a real difference.
+          </p>
+
+          <div class="about-specialties">
+            <h3>What I Do Best</h3>
+            <div class="specialties-grid">
+              <div class="specialty-item">
+                <i class="fas fa-code"></i>
+                <span>Full Stack Development</span>
+              </div>
+              <div class="specialty-item">
+                <i class="fas fa-palette"></i>
+                <span>UI/UX Design</span>
+              </div>
+              <div class="specialty-item">
+                <i class="fas fa-brain"></i>
+                <span>Machine Learning & AI</span>
+              </div>
+              <div class="specialty-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Data Science</span>
+              </div>
+              <div class="specialty-item">
+                <i class="fas fa-eye"></i>
+                <span>Computer Vision</span>
+              </div>
+              <div class="specialty-item">
+                <i class="fas fa-rocket"></i>
+                <span>Tech Innovation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-mission">
+            <div class="mission-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <p>
+              I'm an aspiring tech entrepreneur with a mission: <strong>leverage AI to transform Jamaica
+              and the Caribbean</strong>. I believe technology should be accessible to everyone, and I'm
+              passionate about building solutions that create meaningful impact in my community and beyond.
+            </p>
+          </div>
+
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-target="50">0</span>
+              <span class="stat-label">Projects Completed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="10">0</span>
+              <span class="stat-label">Technologies Mastered</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="100">0</span>
+              <span class="stat-label">Problems Solved</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  
-  
-  
 
-  <section id="resume">
-    <!-- Resume section content -->
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="title-underline"></div>
+        <p class="section-subtitle">Technologies I work with to bring ideas to life</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Frontend Development -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Frontend Development</h3>
+          <div class="skill-tags">
+            <span class="tag">React</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">Tailwind</span>
+            <span class="tag">Vue.js</span>
+          </div>
+          <p>Creating responsive, intuitive interfaces with modern frameworks and best practices.</p>
+        </div>
+
+        <!-- Backend Development -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-server"></i>
+          </div>
+          <h3>Backend Development</h3>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">Django</span>
+            <span class="tag">REST APIs</span>
+          </div>
+          <p>Building robust, scalable server-side applications and APIs.</p>
+        </div>
+
+        <!-- AI & Machine Learning -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>AI & Machine Learning</h3>
+          <div class="skill-tags">
+            <span class="tag">TensorFlow</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Deep Learning</span>
+          </div>
+          <p>Developing intelligent systems that learn and adapt to solve complex problems.</p>
+        </div>
+
+        <!-- Data Science -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h3>Data Science</h3>
+          <div class="skill-tags">
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Visualization</span>
+          </div>
+          <p>Transforming raw data into actionable insights through analysis and visualization.</p>
+        </div>
+
+        <!-- UI/UX Design -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-pencil-ruler"></i>
+          </div>
+          <h3>UI/UX Design</h3>
+          <div class="skill-tags">
+            <span class="tag">Figma</span>
+            <span class="tag">Adobe XD</span>
+            <span class="tag">Prototyping</span>
+            <span class="tag">Wireframing</span>
+            <span class="tag">User Research</span>
+            <span class="tag">Design Systems</span>
+          </div>
+          <p>Crafting beautiful, user-centered designs that enhance digital experiences.</p>
+        </div>
+
+        <!-- DevOps & Tools -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>DevOps & Tools</h3>
+          <div class="skill-tags">
+            <span class="tag">Git</span>
+            <span class="tag">Docker</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Agile</span>
+          </div>
+          <p>Streamlining development workflows and deploying applications efficiently.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- Portfolio Section -->
   <section id="portfolio" class="portfolio-section">
     <h2 class="portfolio-heading">abishua's <em>humble</em> portfolio</h2>
     <div class="portfolio-cards">
@@ -137,28 +347,107 @@
     </div>
   </section>
 
-  <section id="services">
-    <!-- Services section content -->
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Let's Build Something Amazing</h2>
+        <div class="title-underline"></div>
+        <p class="section-subtitle">
+          Got a project in mind? Want to collaborate? Or just want to chat about tech?<br>
+          I'd love to hear from you!
+        </p>
+      </div>
+
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email Me</h3>
+            <a href="mailto:abishua@example.com">abishua@example.com</a>
+            <p>I'll respond within 24 hours</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <h3>LinkedIn</h3>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">Connect with me</a>
+            <p>Let's expand our networks</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <h3>GitHub</h3>
+            <a href="https://github.com/yourgithub" target="_blank">Check out my code</a>
+            <p>Open source contributions welcome</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fab fa-twitter"></i>
+            </div>
+            <h3>Twitter</h3>
+            <a href="https://twitter.com/yourhandle" target="_blank">Follow my journey</a>
+            <p>Tech thoughts and updates</p>
+          </div>
+        </div>
+
+        <div class="contact-form-container">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" required placeholder="john@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required placeholder="Let's collaborate!">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or idea..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Contact Section (Hidden by Default) -->
-<div id="contact-section" class="contact-container">
-  <div class="contact-card">
-    <i class="fas fa-envelope"></i> Email: 
-    <a href="mailto:your.email@example.com">your.email@example.com</a>
-  </div>
-  <div class="contact-card">
-    <i class="fab fa-linkedin"></i> LinkedIn: 
-    <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
-  </div>
-  <div class="contact-card">
-    <i class="fab fa-github"></i> GitHub: 
-    <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a>
-  </div>
-</div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="/assets/abishua-logo.png" alt="Abishua Logo" class="footer-logo">
+        <p>Building the future, one line of code at a time.</p>
+      </div>
 
-<!-- Contact Me Button in Navbar -->
-<button id="contact-btn">Contact Me</button>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+          </ul>
+        </div>
 
 <!-- Modal Structure -->
 <div id="projectModal" class="modal">
@@ -170,8 +459,57 @@
   </div>
 </div>
 
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/assets/Abishua_Resume.pdf" target="_blank">Resume</a></li>
+            <li><a href="#now">What I'm Up To</a></li>
+            <li><a href="#contact">Get in Touch</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow the Journey</h4>
+        <div class="social-icons">
+          <a href="https://github.com/yourgithub" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com/yourhandle" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:abishua@example.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Abishua. Designed & Developed with <i class="fas fa-heart"></i> in Jamaica</p>
+      <p class="footer-tagline">Making technology accessible, one project at a time.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Animated Background Elements -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
 </body>
 </html>
