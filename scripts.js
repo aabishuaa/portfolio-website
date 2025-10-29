@@ -36,4 +36,48 @@ document.addEventListener("DOMContentLoaded", function () {
           }
       });
   }
+
+  // Modal functionality
+  const modal = document.getElementById("projectModal");
+  const modalClose = document.querySelector(".modal-close");
+  const modalTitle = document.getElementById("modal-title");
+  const modalImage = document.getElementById("modal-image");
+  const modalDescription = document.getElementById("modal-description");
+  const cardArrows = document.querySelectorAll(".card-arrow");
+
+  // Open modal when clicking card arrows
+  cardArrows.forEach(arrow => {
+    arrow.addEventListener("click", function(event) {
+      event.preventDefault();
+
+      const title = this.getAttribute("data-title");
+      const image = this.getAttribute("data-image");
+      const description = this.getAttribute("data-description");
+
+      modalTitle.textContent = title;
+      modalImage.src = image;
+      modalDescription.textContent = description;
+
+      modal.style.display = "block";
+    });
+  });
+
+  // Close modal when clicking X
+  modalClose.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+
+  // Close modal when clicking outside
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+    }
+  });
 });

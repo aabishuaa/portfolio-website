@@ -99,39 +99,39 @@
         <img src="/assets/finny-project-image.png" alt="Project 1" class="card-image">
         <h3 class="card-title">Financial AI Chatbot</h3>
         <p class="card-description">Short description of the project...</p>
-        <a href="#project1" class="card-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        <button class="card-arrow" data-project="1" data-title="Financial AI Chatbot" data-image="/assets/finny-project-image.png" data-description="A comprehensive AI-powered chatbot designed to help users with financial planning, budgeting, and investment advice. Built with modern NLP technologies."><i class="fa-solid fa-arrow-right"></i></button>
       </div>
       <!-- Card 2 -->
       <div class="card">
         <img src="/assets/fakebuster-project-image.png" alt="Project 2" class="card-image">
         <h3 class="card-title">Deepfake Detector</h3>
         <p class="card-description">Short description of the project...</p>
-        <a href="#project2" class="card-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        <button class="card-arrow" data-project="2" data-title="Deepfake Detector" data-image="/assets/fakebuster-project-image.png" data-description="An advanced machine learning system that detects deepfake videos and images using computer vision and neural networks to identify manipulated media content."><i class="fa-solid fa-arrow-right"></i></button>
       </div>
       <!-- Card 3 -->
       <div class="card">
         <img src="/assets/watched-project-image.png" alt="Project 3" class="card-image">
         <h3 class="card-title">Movie Reccommender</h3>
         <p class="card-description">Short description of the project...</p>
-        <a href="#project3" class="card-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        <button class="card-arrow" data-project="3" data-title="Movie Recommender" data-image="/assets/watched-project-image.png" data-description="A personalized movie recommendation system that uses collaborative filtering and machine learning to suggest films based on your viewing history and preferences."><i class="fa-solid fa-arrow-right"></i></button>
       </div>
       <div class="card">
-        <img src="/assets/watched-project-image.png" alt="Project 3" class="card-image">
-        <h3 class="card-title">Movie Reccommender</h3>
+        <img src="/assets/watched-project-image.png" alt="Project 4" class="card-image">
+        <h3 class="card-title">Project 4</h3>
         <p class="card-description">Short description of the project...</p>
-        <a href="#project3" class="card-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        <button class="card-arrow" data-project="4" data-title="Project 4" data-image="/assets/watched-project-image.png" data-description="Description for project 4. Add your project details here."><i class="fa-solid fa-arrow-right"></i></button>
       </div>
       <div class="card">
-        <img src="/assets/watched-project-image.png" alt="Project 3" class="card-image">
-        <h3 class="card-title">Movie Reccommender</h3>
+        <img src="/assets/watched-project-image.png" alt="Project 5" class="card-image">
+        <h3 class="card-title">Project 5</h3>
         <p class="card-description">Short description of the project...</p>
-        <a href="#project3" class="card-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        <button class="card-arrow" data-project="5" data-title="Project 5" data-image="/assets/watched-project-image.png" data-description="Description for project 5. Add your project details here."><i class="fa-solid fa-arrow-right"></i></button>
       </div>
       <div class="card">
-        <img src="/assets/watched-project-image.png" alt="Project 3" class="card-image">
-        <h3 class="card-title">Movie Reccommender</h3>
+        <img src="/assets/watched-project-image.png" alt="Project 6" class="card-image">
+        <h3 class="card-title">Project 6</h3>
         <p class="card-description">Short description of the project...</p>
-        <a href="#project3" class="card-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        <button class="card-arrow" data-project="6" data-title="Project 6" data-image="/assets/watched-project-image.png" data-description="Description for project 6. Add your project details here."><i class="fa-solid fa-arrow-right"></i></button>
       </div>
       <!-- Add more cards as needed -->
     </div>
@@ -160,6 +160,15 @@
 <!-- Contact Me Button in Navbar -->
 <button id="contact-btn">Contact Me</button>
 
+<!-- Modal Structure -->
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <h2 id="modal-title"></h2>
+    <img id="modal-image" src="" alt="Project Image">
+    <p id="modal-description"></p>
+  </div>
+</div>
 
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
