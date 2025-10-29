@@ -487,38 +487,49 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ============================================
-  // CONSOLE EASTER EGG
-  // ============================================
+  // Modal functionality
+  const modal = document.getElementById("projectModal");
+  const modalClose = document.querySelector(".modal-close");
+  const modalTitle = document.getElementById("modal-title");
+  const modalImage = document.getElementById("modal-image");
+  const modalDescription = document.getElementById("modal-description");
+  const cardArrows = document.querySelectorAll(".card-arrow");
 
-  console.log('%c👋 Hey there, curious developer!', 'font-size: 20px; font-weight: bold; color: #1e90ff;');
-  console.log('%c🚀 Welcome to my portfolio', 'font-size: 14px; color: #4ecdc4;');
-  console.log('%cLike what you see? Let\'s connect!', 'font-size: 12px; color: #666;');
-  console.log('%c💼 Email: abishua@example.com', 'font-size: 12px; color: #666;');
-  console.log('%c🔗 LinkedIn: linkedin.com/in/yourprofile', 'font-size: 12px; color: #666;');
+  // Open modal when clicking card arrows
+  cardArrows.forEach(arrow => {
+    arrow.addEventListener("click", function(event) {
+      event.preventDefault();
 
-  // ============================================
-  // KEYBOARD SHORTCUTS
-  // ============================================
+      const title = this.getAttribute("data-title");
+      const image = this.getAttribute("data-image");
+      const description = this.getAttribute("data-description");
 
-  document.addEventListener('keydown', (e) => {
-    // Press 'H' to go home
-    if (e.key === 'h' || e.key === 'H') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+      modalTitle.textContent = title;
+      modalImage.src = image;
+      modalDescription.textContent = description;
 
-    // Press 'C' to go to contact
-    if (e.key === 'c' || e.key === 'C') {
-      document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+      modal.style.display = "block";
+    });
+  });
+
+  // Close modal when clicking X
+  modalClose.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+
+  // Close modal when clicking outside
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
     }
   });
 
-  // ============================================
-  // INITIALIZATION COMPLETE
-  // ============================================
-
-  console.log('%c✅ Portfolio initialized successfully!', 'font-size: 12px; color: #28a745; font-weight: bold;');
-
+  // Close modal with Escape key
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+    }
+  });
 });
 
 // ============================================
