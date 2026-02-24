@@ -74,15 +74,17 @@ export function initThemeToggle() {
 }
 
 /**
- * Initialize page loading animation
+ * Initialize page loading animation — fade in on load
  */
 export function initLoadingAnimation() {
+  // Start invisible, then fade in once everything is parsed
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+
   window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-      document.body.style.transition = 'opacity 0.5s ease';
+    requestAnimationFrame(() => {
       document.body.style.opacity = '1';
-    }, 100);
+    });
   });
 }
 

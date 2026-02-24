@@ -1,12 +1,12 @@
 /**
  * ANIMATIONS MODULE
- * Handles counters, intersection observers, parallax, and visual effects
+ * Handles counters, scroll-reveal, parallax, and visual effects
  */
 
 import { debounce } from './utils.js';
 
 /**
- * Animate counter numbers in stats section
+ * Animate counter numbers in the stats section
  */
 export function initCounterAnimation() {
   const statNumbers = document.querySelectorAll('.stat-number');
@@ -18,99 +18,107 @@ export function initCounterAnimation() {
     const aboutSection = document.querySelector('.about-section');
     if (!aboutSection) return;
 
-    const sectionPosition = aboutSection.getBoundingClientRect();
-
-    if (sectionPosition.top < window.innerHeight && sectionPosition.bottom >= 0) {
+    const rect = aboutSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
       hasAnimated = true;
 
       statNumbers.forEach(stat => {
         const target = parseInt(stat.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
+        const duration = 1800; // ms
+        const fps = 60;
+        const increment = target / (duration / (1000 / fps));
         let current = 0;
 
-        const updateCounter = () => {
+        const tick = () => {
           current += increment;
           if (current < target) {
             stat.textContent = Math.ceil(current) + '+';
-            requestAnimationFrame(updateCounter);
+            requestAnimationFrame(tick);
           } else {
             stat.textContent = target + '+';
           }
         };
 
-        updateCounter();
+        tick();
       });
     }
   }
 
-  window.addEventListener('scroll', animateCounters);
+  window.addEventListener('scroll', animateCounters, { passive: true });
+  animateCounters(); // run once on load in case already in view
 }
 
 /**
- * Initialize intersection observer for fade-in animations
+ * Scroll-reveal using IntersectionObserver + CSS classes.
+ * Elements get `anim-ready` applied in JS, then `anim-in` when visible.
+ * Transition properties live in styles.css (.anim-ready / .anim-in).
  */
-export function initIntersectionObserver() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
+export function initScrollReveal() {
+  const selector = '.skill-card, .project-card, .now-card, .contact-card, .specialty-item, .stat-item';
+  const elements = document.querySelectorAll(selector);
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, observerOptions);
-
-  // Observe cards and sections for fade-in animations
-  const animatedElements = document.querySelectorAll(
-    '.skill-card, .project-card, .now-card, .contact-card, .specialty-item'
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('anim-in');
+          observer.unobserve(entry.target); // fire once
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
-  animatedElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  elements.forEach((el, i) => {
+    el.classList.add('anim-ready');
+    // Stagger delay based on position within its parent
+    const siblings = Array.from(el.parentElement.children);
+    const idx = siblings.indexOf(el);
+    el.style.transitionDelay = `${idx * 60}ms`;
     observer.observe(el);
   });
 }
 
 /**
- * Handle parallax effect on hero section
+ * Parallax fade on hero content as user scrolls down
  */
 export function handleParallax() {
   const scrolled = window.pageYOffset;
   const heroContent = document.querySelector('.hero-content');
+  if (!heroContent || scrolled >= window.innerHeight) return;
 
-  if (heroContent && scrolled < window.innerHeight) {
-    heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-    heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
-  }
+  const progress = scrolled / window.innerHeight;
+  heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
+  heroContent.style.opacity = 1 - progress * 1.4;
 }
 
 /**
- * Animate floating blobs with mouse movement
+ * Animate background blobs subtly with mouse position
  */
 export function initBlobAnimation() {
   const blobs = document.querySelectorAll('.blob');
-  let mouseX = 0;
-  let mouseY = 0;
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let currentX = [mouseX, mouseX, mouseX];
+  let currentY = [mouseY, mouseY, mouseY];
 
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-  });
+  }, { passive: true });
 
+  // Lerp (smooth follow) so blobs drift rather than snap
   function animateBlobs() {
-    blobs.forEach((blob, index) => {
-      const speed = (index + 1) * 0.005;
-      const x = (mouseX - window.innerWidth / 2) * speed;
-      const y = (mouseY - window.innerHeight / 2) * speed;
+    blobs.forEach((blob, i) => {
+      const speed = (i + 1) * 0.003;
+      const lerp = 0.03 + i * 0.01;
 
-      blob.style.transform = `translate(${x}px, ${y}px)`;
+      currentX[i] += ((mouseX - window.innerWidth / 2) * speed - currentX[i] + window.innerWidth / 2) * lerp;
+      currentY[i] += ((mouseY - window.innerHeight / 2) * speed - currentY[i] + window.innerHeight / 2) * lerp;
+
+      const dx = currentX[i] - window.innerWidth / 2;
+      const dy = currentY[i] - window.innerHeight / 2;
+      blob.style.transform = `translate(${dx}px, ${dy}px)`;
     });
 
     requestAnimationFrame(animateBlobs);
@@ -120,65 +128,60 @@ export function initBlobAnimation() {
 }
 
 /**
- * Skill card tilt effect on hover
+ * 3D tilt effect on skill and project preview cards
  */
 export function initCardTilt() {
-  const cards = document.querySelectorAll('.skill-card, .project-card');
+  const cards = document.querySelectorAll('.skill-card, .card-preview');
 
   cards.forEach(card => {
-    card.addEventListener('mousemove', function(e) {
+    card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const rotX = ((y - cy) / cy) * 5;
+      const rotY = ((cx - x) / cx) * 5;
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = (y - centerY) / 10;
-      const rotateY = (centerX - x) / 10;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+      card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
     });
 
-    card.addEventListener('mouseleave', function() {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
     });
   });
 }
 
 /**
- * Initialize lazy loading for images
+ * Lazy-load images as they enter the viewport
  */
 export function initLazyLoading() {
   if (!('IntersectionObserver' in window)) return;
 
-  const imageObserver = new IntersectionObserver((entries, observer) => {
+  const imgObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
-        img.src = img.dataset.src || img.src;
+        if (img.dataset.src) img.src = img.dataset.src;
         img.classList.add('loaded');
-        observer.unobserve(img);
+        obs.unobserve(img);
       }
     });
   });
 
-  document.querySelectorAll('img').forEach(img => {
-    imageObserver.observe(img);
-  });
+  document.querySelectorAll('img').forEach(img => imgObserver.observe(img));
 }
 
 /**
- * Initialize all animations
+ * Master init
  */
 export function initAnimations() {
   initCounterAnimation();
-  initIntersectionObserver();
+  initScrollReveal();
   initBlobAnimation();
   initCardTilt();
   initLazyLoading();
 
-  // Parallax with debounce
-  const debouncedParallax = debounce(handleParallax, 10);
-  window.addEventListener('scroll', debouncedParallax);
+  const debouncedParallax = debounce(handleParallax, 8);
+  window.addEventListener('scroll', debouncedParallax, { passive: true });
 }
