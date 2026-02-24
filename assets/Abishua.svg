@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="400" height="520">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#07070f"/>
+      <stop offset="100%" style="stop-color:#0e0e22"/>
+    </linearGradient>
+    <linearGradient id="cyanPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#7b2fff"/>
+    </linearGradient>
+    <linearGradient id="purplePink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7b2fff"/>
+      <stop offset="100%" style="stop-color:#ff2fdb"/>
+    </linearGradient>
+    <radialGradient id="avatarBg" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" style="stop-color:#1a1a3e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#07070f;stop-opacity:1"/>
+    </radialGradient>
+    <radialGradient id="glowBg" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="circleClip">
+      <circle cx="200" cy="195" r="100"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="520" fill="url(#bgGrad)" rx="24"/>
+
+  <!-- Glow aura behind avatar -->
+  <ellipse cx="200" cy="195" rx="130" ry="130" fill="url(#glowBg)"/>
+
+  <!-- Outer ring (animated feel via dashes) -->
+  <circle cx="200" cy="195" r="130" fill="none" stroke="url(#cyanPurple)" stroke-width="1"
+    stroke-dasharray="12 6" opacity="0.35"/>
+
+  <!-- Middle ring -->
+  <circle cx="200" cy="195" r="112" fill="none" stroke="rgba(0,212,255,0.12)" stroke-width="1.5"/>
+
+  <!-- Avatar circle background -->
+  <circle cx="200" cy="195" r="100" fill="url(#avatarBg)" stroke="url(#cyanPurple)" stroke-width="1.5"
+    filter="url(#softGlow)"/>
+
+  <!-- Subtle silhouette: head -->
+  <ellipse cx="200" cy="168" rx="34" ry="38" fill="rgba(0,212,255,0.09)" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+
+  <!-- Subtle silhouette: shoulders -->
+  <path d="M 140 250 Q 145 220 170 210 Q 185 205 200 205 Q 215 205 230 210 Q 255 220 260 250 Z"
+    fill="rgba(0,212,255,0.07)" stroke="rgba(0,212,255,0.18)" stroke-width="1"/>
+
+  <!-- Large initial A — the main focal element -->
+  <text x="200" y="208" text-anchor="middle"
+    font-family="'Space Grotesk', 'Segoe UI', Arial, sans-serif"
+    font-size="80" font-weight="800"
+    fill="url(#cyanPurple)"
+    opacity="0.92"
+    filter="url(#strongGlow)"
+    letter-spacing="-4">A</text>
+
+  <!-- Decorative corner accent — top left -->
+  <line x1="20" y1="20" x2="54" y2="20" stroke="url(#cyanPurple)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="20" y1="20" x2="20" y2="54" stroke="url(#cyanPurple)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Decorative corner accent — top right -->
+  <line x1="380" y1="20" x2="346" y2="20" stroke="url(#purplePink)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="380" y1="20" x2="380" y2="54" stroke="url(#purplePink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Decorative corner accent — bottom left -->
+  <line x1="20" y1="500" x2="54" y2="500" stroke="url(#cyanPurple)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="20" y1="500" x2="20" y2="466" stroke="url(#cyanPurple)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Decorative corner accent — bottom right -->
+  <line x1="380" y1="500" x2="346" y2="500" stroke="url(#purplePink)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="380" y1="500" x2="380" y2="466" stroke="url(#purplePink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Accent dots scattered -->
+  <circle cx="52" cy="120" r="3" fill="#00d4ff" opacity="0.45"/>
+  <circle cx="72" cy="108" r="2" fill="#7b2fff" opacity="0.5"/>
+  <circle cx="348" cy="120" r="3" fill="#7b2fff" opacity="0.45"/>
+  <circle cx="328" cy="108" r="2" fill="#ff2fdb" opacity="0.5"/>
+  <circle cx="60" cy="380" r="2.5" fill="#00d4ff" opacity="0.35"/>
+  <circle cx="340" cy="380" r="2.5" fill="#7b2fff" opacity="0.35"/>
+
+  <!-- Horizontal rule above name -->
+  <line x1="60" y1="340" x2="340" y2="340" stroke="url(#cyanPurple)" stroke-width="1" opacity="0.3"/>
+
+  <!-- Name -->
+  <text x="200" y="382"
+    text-anchor="middle"
+    font-family="'Space Grotesk', 'Segoe UI', Arial, sans-serif"
+    font-size="28" font-weight="700"
+    fill="white"
+    opacity="0.95"
+    letter-spacing="1">Abishua</text>
+
+  <!-- Title / subtitle -->
+  <text x="200" y="414"
+    text-anchor="middle"
+    font-family="'Poppins', 'Segoe UI', Arial, sans-serif"
+    font-size="12" font-weight="400"
+    fill="#00d4ff"
+    opacity="0.8"
+    letter-spacing="2">SOFTWARE ENGINEER &amp; AI INNOVATOR</text>
+
+  <!-- Small divider dots -->
+  <circle cx="162" cy="437" r="2" fill="#00d4ff" opacity="0.4"/>
+  <circle cx="200" cy="437" r="2" fill="#7b2fff" opacity="0.4"/>
+  <circle cx="238" cy="437" r="2" fill="#ff2fdb" opacity="0.4"/>
+
+  <!-- Location tag -->
+  <text x="200" y="462"
+    text-anchor="middle"
+    font-family="'Poppins', 'Segoe UI', Arial, sans-serif"
+    font-size="11" font-weight="400"
+    fill="rgba(136,136,184,0.7)"
+    letter-spacing="1">📍 Jamaica</text>
+</svg>
