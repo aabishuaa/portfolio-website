@@ -2202,3 +2202,523 @@ textarea:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* ============================================================
+   22. 3D FUTURISTIC EFFECTS — ADDED FOR IMMERSIVE EXPERIENCE
+   ============================================================ */
+
+/* ── Hero Canvas (Particle Network) ────────────────────────── */
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* ── Hero Holographic Grid ──────────────────────────────────── */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 150%;
+  top: -25%;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.045) 1px, transparent 1px);
+  background-size: 70px 70px;
+  transform: perspective(600px) rotateX(55deg) translateY(30px);
+  transform-origin: 50% 100%;
+  pointer-events: none;
+  z-index: 0;
+  animation: gridPan 20s linear infinite;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 100%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 100%, black 30%, transparent 80%);
+  opacity: 0.7;
+}
+
+@keyframes gridPan {
+  from { background-position: 0 0; }
+  to   { background-position: 0 70px; }
+}
+
+/* ── Hero Glow Orb (behind the name) ───────────────────────── */
+.hero-orb {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.12) 0%, rgba(123, 47, 255, 0.08) 40%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: orbPulse 4s ease-in-out infinite;
+  filter: blur(20px);
+}
+
+@keyframes orbPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* ── Scanline Sweep (fires once on load) ────────────────────── */
+.hero-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.3) 20%,
+    rgba(0, 212, 255, 0.9) 50%,
+    rgba(0, 212, 255, 0.3) 80%,
+    transparent 100%);
+  box-shadow:
+    0 0 10px rgba(0, 212, 255, 0.6),
+    0 0 40px rgba(0, 212, 255, 0.25);
+  animation: scanDown 3.5s linear 0.5s both;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes scanDown {
+  from { top: 0%;   opacity: 0; }
+  3%   { opacity: 1; }
+  97%  { opacity: 1; }
+  to   { top: 100%; opacity: 0; }
+}
+
+/* ── HUD Corner Brackets ────────────────────────────────────── */
+.hero-hud {
+  position: absolute;
+  inset: 70px 30px 30px;
+  pointer-events: none;
+  z-index: 2;
+  animation: fadeSlideUp 1s var(--ease-out) 0.8s both;
+}
+
+.hud-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  animation: hudPulse 3.5s ease-in-out infinite;
+}
+
+.hud-corner--tl {
+  top: 0; left: 0;
+  border-top: 2px solid rgba(0, 212, 255, 0.7);
+  border-left: 2px solid rgba(0, 212, 255, 0.7);
+  box-shadow: -2px -2px 10px rgba(0, 212, 255, 0.3);
+}
+.hud-corner--tr {
+  top: 0; right: 0;
+  border-top: 2px solid rgba(123, 47, 255, 0.7);
+  border-right: 2px solid rgba(123, 47, 255, 0.7);
+  animation-delay: 0.4s;
+  box-shadow: 2px -2px 10px rgba(123, 47, 255, 0.3);
+}
+.hud-corner--bl {
+  bottom: 0; left: 0;
+  border-bottom: 2px solid rgba(123, 47, 255, 0.7);
+  border-left: 2px solid rgba(123, 47, 255, 0.7);
+  animation-delay: 0.8s;
+  box-shadow: -2px 2px 10px rgba(123, 47, 255, 0.3);
+}
+.hud-corner--br {
+  bottom: 0; right: 0;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.7);
+  border-right: 2px solid rgba(0, 212, 255, 0.7);
+  animation-delay: 1.2s;
+  box-shadow: 2px 2px 10px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes hudPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* ── HUD Status Display (bottom-right) ──────────────────────── */
+.hero-status {
+  position: absolute;
+  bottom: 100px;
+  right: 40px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 10px;
+  color: rgba(0, 212, 255, 0.45);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 2;
+  pointer-events: none;
+  z-index: 3;
+  animation: fadeSlideUp 1s var(--ease-out) 2s both;
+}
+
+.hero-status span { display: block; }
+
+.hero-status-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00d4ff;
+  margin-right: 8px;
+  vertical-align: middle;
+  box-shadow: 0 0 6px #00d4ff, 0 0 12px rgba(0, 212, 255, 0.5);
+  animation: dotBlink 2s ease-in-out infinite;
+}
+
+@keyframes dotBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.15; }
+}
+
+/* ── Hero Coordinates (top-left HUD text) ───────────────────── */
+.hero-coords {
+  position: absolute;
+  top: 90px;
+  left: 40px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 10px;
+  color: rgba(123, 47, 255, 0.5);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 2;
+  pointer-events: none;
+  z-index: 3;
+  animation: fadeSlideUp 1s var(--ease-out) 2.2s both;
+}
+
+.hero-coords span { display: block; }
+
+/* ── MASSIVE NAME GLOW — the showstopper ────────────────────── */
+.name-highlight {
+  filter:
+    drop-shadow(0 0 12px rgba(0, 212, 255, 1))
+    drop-shadow(0 0 35px rgba(0, 212, 255, 0.75))
+    drop-shadow(0 0 80px rgba(0, 212, 255, 0.4))
+    drop-shadow(0 0 150px rgba(123, 47, 255, 0.25));
+  animation:
+    gradientPan 6s ease infinite,
+    nameGlowPulse 3.5s ease-in-out infinite,
+    fadeSlideUp 0.8s var(--ease-out) both;
+}
+
+@keyframes nameGlowPulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 12px rgba(0, 212, 255, 1))
+      drop-shadow(0 0 35px rgba(0, 212, 255, 0.75))
+      drop-shadow(0 0 80px rgba(0, 212, 255, 0.4))
+      drop-shadow(0 0 150px rgba(123, 47, 255, 0.25));
+  }
+  35% {
+    filter:
+      drop-shadow(0 0 18px rgba(123, 47, 255, 1))
+      drop-shadow(0 0 50px rgba(123, 47, 255, 0.8))
+      drop-shadow(0 0 100px rgba(123, 47, 255, 0.45))
+      drop-shadow(0 0 180px rgba(0, 212, 255, 0.2));
+  }
+  70% {
+    filter:
+      drop-shadow(0 0 15px rgba(255, 47, 219, 0.95))
+      drop-shadow(0 0 42px rgba(255, 47, 219, 0.7))
+      drop-shadow(0 0 90px rgba(0, 212, 255, 0.45))
+      drop-shadow(0 0 160px rgba(0, 212, 255, 0.2));
+  }
+}
+
+/* ── Name Glitch Effect (JS triggered once) ─────────────────── */
+@keyframes glitchShift {
+  0%   { clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
+  20%  { clip-path: inset(60% 0 10% 0); transform: translate(4px, 0); }
+  40%  { clip-path: inset(40% 0 30% 0); transform: translate(-3px, 0); }
+  60%  { clip-path: inset(10% 0 50% 0); transform: translate(3px, 0); }
+  80%  { clip-path: inset(70% 0 5%  0); transform: translate(-2px, 0); }
+  100% { clip-path: inset(0% 0 0%  0); transform: translate(0, 0); }
+}
+
+.name-glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: var(--grad-name);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glitchShift 0.5s steps(1) both;
+  color: #00d4ff;
+  left: 2px;
+  text-shadow: -2px 0 #ff2fdb;
+}
+
+/* ── Typewriter Cursor ──────────────────────────────────────── */
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--accent-1);
+  margin-left: 3px;
+  vertical-align: middle;
+  border-radius: 1px;
+  animation: cursorBlink 1s step-end infinite;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.9), 0 0 18px rgba(0, 212, 255, 0.5);
+}
+
+.typewriter-cursor.cursor-idle {
+  animation-duration: 1.4s;
+  opacity: 0.5;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Section 3D Reveal Transition ───────────────────────────── */
+.section-3d-ready {
+  opacity: 0;
+  transform: perspective(1400px) rotateX(8deg) translateY(55px) scale(0.98);
+  transition:
+    opacity 0.95s var(--ease-out),
+    transform 0.95s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.section-revealed {
+  opacity: 1;
+  transform: perspective(1400px) rotateX(0deg) translateY(0) scale(1);
+}
+
+/* ── Neon Section Dividers ──────────────────────────────────── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  position: relative;
+  overflow: visible;
+  background: transparent;
+  z-index: 1;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 212, 255, 0.5) 30%,
+    rgba(123, 47, 255, 0.6) 50%,
+    rgba(0, 212, 255, 0.5) 70%,
+    transparent
+  );
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  animation: dividerSweep 4s ease-in-out infinite;
+}
+
+@keyframes dividerSweep {
+  0%   { left: -50%; }
+  100% { left: 150%; }
+}
+
+/* ── Section Title Glow ─────────────────────────────────────── */
+.section-title-glow {
+  text-shadow:
+    0 0 30px rgba(0, 212, 255, 0.2),
+    0 0 60px rgba(0, 212, 255, 0.1);
+  transition: text-shadow 0.4s ease;
+}
+
+.section-title-glow:hover {
+  text-shadow:
+    0 0 20px rgba(0, 212, 255, 0.5),
+    0 0 50px rgba(0, 212, 255, 0.25),
+    0 0 90px rgba(123, 47, 255, 0.15);
+}
+
+/* ── Neon Skill Cards ───────────────────────────────────────── */
+.neon-card {
+  position: relative;
+  transition: box-shadow 0.4s ease, transform 0.3s ease, border-color 0.4s ease !important;
+}
+
+.neon-card:hover {
+  box-shadow:
+    var(--shadow-md),
+    0 0 20px color-mix(in srgb, var(--neon-color) 40%, transparent),
+    0 0 50px color-mix(in srgb, var(--neon-color) 20%, transparent),
+    inset 0 0 30px color-mix(in srgb, var(--neon-color) 5%, transparent) !important;
+  border-color: color-mix(in srgb, var(--neon-color) 55%, transparent) !important;
+}
+
+/* Fallback for browsers without color-mix */
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .neon-card:hover {
+    box-shadow: var(--shadow-md), 0 0 30px rgba(0, 212, 255, 0.4) !important;
+    border-color: rgba(0, 212, 255, 0.5) !important;
+  }
+}
+
+/* ── Skill Icon Glow on Card Hover ──────────────────────────── */
+.neon-card:hover .skill-icon {
+  filter: drop-shadow(0 0 12px var(--neon-color));
+  transform: scale(1.12);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* ── Project Card Reveal Enhancement ───────────────────────── */
+.project-card.anim-in .card-preview {
+  animation: cardPopIn 0.6s var(--ease-out) both;
+}
+
+@keyframes cardPopIn {
+  from {
+    transform: perspective(800px) rotateY(-8deg) scale(0.96);
+    opacity: 0.5;
+  }
+  to {
+    transform: perspective(800px) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── Floating Hex Accents (decorative) ──────────────────────── */
+.hero-hex {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: hexFloat 0.8s var(--ease-out) forwards;
+}
+
+.hero-hex-1 {
+  width: 180px;
+  height: 180px;
+  right: 8%;
+  top: 20%;
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  border-radius: 50%;
+  animation:
+    hexFloat 1s var(--ease-out) 1.8s forwards,
+    hexSpin 30s linear 2.8s infinite;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.05), inset 0 0 30px rgba(0, 212, 255, 0.03);
+}
+
+.hero-hex-1::before {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(123, 47, 255, 0.1);
+  border-radius: 50%;
+}
+
+.hero-hex-1::after {
+  content: '';
+  position: absolute;
+  inset: 35px;
+  border: 1px solid rgba(0, 212, 255, 0.08);
+  border-radius: 50%;
+}
+
+.hero-hex-2 {
+  width: 120px;
+  height: 120px;
+  left: 6%;
+  bottom: 25%;
+  border: 1px solid rgba(123, 47, 255, 0.15);
+  border-radius: 50%;
+  animation:
+    hexFloat 1s var(--ease-out) 2.2s forwards,
+    hexSpin 22s linear 3.2s infinite reverse;
+  box-shadow: 0 0 20px rgba(123, 47, 255, 0.05);
+}
+
+.hero-hex-2::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 47, 219, 0.08);
+  border-radius: 50%;
+}
+
+@keyframes hexFloat {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hexSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Contact Section Enhancement ───────────────────────────── */
+.contact-section {
+  position: relative;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 50%, rgba(0, 212, 255, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(123, 47, 255, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── Skills Section Grid Lines ──────────────────────────────── */
+.skills-section {
+  position: relative;
+}
+
+.skills-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(123, 47, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123, 47, 255, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+
+/* ── Responsive — Hide decorative HUD on mobile ─────────────── */
+@media (max-width: 768px) {
+  .hero-hud      { display: none; }
+  .hero-status   { display: none; }
+  .hero-coords   { display: none; }
+  .hero-hex-1    { display: none; }
+  .hero-hex-2    { display: none; }
+  .hero-grid     { opacity: 0.4; }
+  .hero-orb      { width: 320px; height: 200px; }
+}
+
+@media (max-width: 480px) {
+  .hero-grid  { display: none; }
+  .hero-orb   { display: none; }
+}
