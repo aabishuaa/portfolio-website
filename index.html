@@ -39,10 +39,48 @@
 
   <!-- Hero Section -->
   <section id="home" class="hero">
+    <!-- Particle network canvas -->
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+    <!-- Holographic perspective grid -->
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <!-- Glow orb behind name -->
+    <div class="hero-orb" aria-hidden="true"></div>
+
+    <!-- Single scanline sweep on load -->
+    <div class="hero-scanline" aria-hidden="true"></div>
+
+    <!-- Targeting / HUD corner brackets -->
+    <div class="hero-hud" aria-hidden="true">
+      <div class="hud-corner hud-corner--tl"></div>
+      <div class="hud-corner hud-corner--tr"></div>
+      <div class="hud-corner hud-corner--bl"></div>
+      <div class="hud-corner hud-corner--br"></div>
+    </div>
+
+    <!-- Floating concentric ring accents -->
+    <div class="hero-hex hero-hex-1" aria-hidden="true"></div>
+    <div class="hero-hex hero-hex-2" aria-hidden="true"></div>
+
+    <!-- HUD status readout (bottom-right) -->
+    <div class="hero-status" aria-hidden="true">
+      <span><span class="hero-status-dot"></span>SYSTEM ONLINE</span>
+      <span>BUILD &mdash; PORTFOLIO v2.0</span>
+      <span>STATUS &mdash; AVAILABLE FOR HIRE</span>
+    </div>
+
+    <!-- HUD coordinates (top-left) -->
+    <div class="hero-coords" aria-hidden="true">
+      <span>LAT &mdash; 18.0179° N</span>
+      <span>LON &mdash; 76.8099° W</span>
+      <span>ORIGIN &mdash; JAMAICA</span>
+    </div>
+
     <div class="hero-content">
       <div class="hero-text">
         <h1 class="hero-title">
-          <span class="greeting">Hey, I'm</span> <span class="name-highlight">Abishua</span>
+          <span class="greeting">Hey, I'm</span> <span class="name-highlight" data-text="Abishua">Abishua</span>
         </h1>
         <h2 class="hero-subtitle">Software Engineer & AI Innovator</h2>
         <p class="hero-description">
@@ -102,6 +140,9 @@
       <p>Scroll to explore</p>
     </div>
   </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
 
   <!-- About Section -->
   <section id="about" class="about-section">
@@ -186,6 +227,9 @@
       </div>
     </div>
   </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
 
   <!-- Skills Section -->
   <section id="skills" class="skills-section">
@@ -301,6 +345,9 @@
       </div>
     </div>
   </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
 
   <!-- Portfolio Section -->
   <section id="portfolio" class="portfolio-section">
@@ -593,6 +640,9 @@
     </div>
   </section>
 
+  <!-- Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
+
   <!-- What I'm Up To Section -->
   <section id="now" class="now-section">
     <div class="section-container">
@@ -641,6 +691,9 @@
       </div>
     </div>
   </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
 
   <!-- Contact Section -->
   <section id="contact" class="contact-section">
